@@ -10,7 +10,7 @@ chrome.commands.onCommand.addListener(function (command) {
                 "open note command on id  ",
                 id
             );
-            // sendCommandToTab(id, "open-note");
+            sendCommandToTab(id, "open-note");
         });
     }
     return true;

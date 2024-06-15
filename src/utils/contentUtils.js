@@ -10,12 +10,27 @@ export function createNote() {
         width: '300px',
         border: '2px solid #ccc',
         backgroundColor: '#f9f9f9',
-        padding: '10px',
         boxShadow: '0 0 10px rgba(0,0,0,0.1)',
         resize: 'both',
         overflow: 'auto',
         zIndex: '1000'
     });
+
+    // Create draggable header
+    const noteHeader = document.createElement('div');
+    noteHeader.classList.add('note-header');
+    noteHeader.innerText = 'Drag here';
+
+    // Apply styles to note header
+    Object.assign(noteHeader.style, {
+        width: '100%',
+        padding: '5px',
+        cursor: 'move',
+        backgroundColor: '#ddd',
+        borderBottom: '2px solid #ccc'
+    });
+
+    noteContainer.appendChild(noteHeader);
 
     // Create title input
     const noteTitle = document.createElement('input');
@@ -51,12 +66,12 @@ export function createNote() {
     document.body.appendChild(noteContainer);
 
     // Make the note draggable
-    makeDraggable(noteContainer);
+    makeDraggable(noteContainer, noteHeader);
 }
 
-function makeDraggable(element) {
+function makeDraggable(element, handle) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    element.onmousedown = dragMouseDown;
+    handle.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
         e = e || window.event;
@@ -82,5 +97,4 @@ function makeDraggable(element) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
-
 }
