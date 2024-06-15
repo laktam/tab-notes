@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Notes on tab",
+    "version": "1.0",
+    "description": "",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "commands",
+        "tabGroups"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "./popup/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "commands": {
+        "open-note": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+Q",
+                "mac": "MacCtrl+Shift+Q"
+            },
+            "description": "Description of your keyboard shortcut"
+        }
+    }
+}
