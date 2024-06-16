@@ -133,7 +133,18 @@ function makeDraggable(element, handle) {
 // }
 
 
-// note should be an object {title, content}
+/**
+ * Represents a note.
+ * @typedef {Object} Note
+ * @property {string} title - The title of the note.
+ * @property {string} content - The content of the note.
+ */
+
+/**
+ * add note to note list
+ *
+ * @param {Note} note - The note object to add.
+ */
 function addNoteToList(note) {
 
     //get current page info
