@@ -2,7 +2,6 @@ export function createNote() {
     const noteContainer = document.createElement('div');
     noteContainer.classList.add('note-container');
 
-    // Apply styles to note container
     Object.assign(noteContainer.style, {
         position: 'absolute',
         top: '20px',
@@ -62,6 +61,25 @@ export function createNote() {
 
     noteContainer.appendChild(noteContent);
 
+    // save button
+    const saveButton = document.createElement('button');
+    saveButton.innerText = "Save";
+    saveButton.style.float = "right";
+    saveButton.style.border = "solid 2px gray";
+    saveButton.style.padding = "3px";
+    saveButton.style.margin = "5px";
+    saveButton.addEventListener('click', () => {
+        addNoteToList({
+            title: noteTitle.value,
+            content: noteContent.value
+        })
+    })
+
+
+    noteContainer.appendChild(saveButton);
+
+
+
     // Add the note container to the body
     document.body.appendChild(noteContainer);
 
@@ -97,4 +115,42 @@ function makeDraggable(element, handle) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
+}
+
+// function getNoteListByKey(callback) {
+//     //get current page info
+//     let site = location.hostname,
+//         title = document.title;
+//     let notesKey = title + " " + "[" + site + "]";
+//     console.log("notse key in content script : ", notesKey);
+
+//     chrome.storage.local.get(notesKey).then((result) => {
+//         console.log("Value is " + result[notesList]);
+//         callback(result[notesList])
+//     });
+
+
+// }
+
+
+// note should be an object {title, content}
+function addNoteToList(note) {
+
+    //get current page info
+    let site = location.hostname,
+        title = document.title;
+    let notesKey = title + " " + "[" + site + "]";
+    console.log("noteskey ", notesKey);
+    // get notelist
+    chrome.storage.local.get(notesKey).then((result) => {
+        console.log("before Value is " + result[notesKey]);
+        const notesList = result[notesKey] || []; // in case the notelist is undefined
+        // add note to list
+        notesList.push(note);
+        chrome.storage.local.set({ [notesKey]: notesList }).then(() => {
+            console.log("Value is set ", notesList);
+        });
+    });
+
+
 }
