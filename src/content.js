@@ -6,8 +6,17 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     console.log(message);
     if (message.action === "open-note") {
         createNote();
+        sendResponse();
+    } else if (message.action === "get-note-key") {
+        let site = location.hostname,
+            title = document.title;
+        let notesKey = title + " " + "[" + site + "]";
+        let response = {
+            notesKey
+        }
+        sendResponse(response);
+
     }
 
-    sendResponse();
     return true;
 })
