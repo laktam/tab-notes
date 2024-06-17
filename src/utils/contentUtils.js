@@ -73,6 +73,7 @@ export function createNote() {
             title: noteTitle.value,
             content: noteContent.value
         })
+
     })
 
 
