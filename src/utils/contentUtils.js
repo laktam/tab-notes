@@ -69,11 +69,14 @@ export function createNote() {
     saveButton.style.padding = "3px";
     saveButton.style.margin = "5px";
     saveButton.addEventListener('click', () => {
+        let link = window.location.href;
         addNoteToList({
             title: noteTitle.value,
-            content: noteContent.value
+            content: noteContent.value,
+            link
         })
-
+        noteTitle.value = "";
+        noteContent.value = "";
     })
 
 
@@ -139,7 +142,8 @@ function makeDraggable(element, handle) {
  * @typedef {Object} Note
  * @property {string} title - The title of the note.
  * @property {string} content - The content of the note.
- */
+ * @property {string} link - The exact link.
+*/
 
 /**
  * add note to note list
@@ -153,6 +157,7 @@ function addNoteToList(note) {
         title = document.title;
     let notesKey = title + " " + "[" + site + "]";
     console.log("noteskey ", notesKey);
+
     // get notelist
     chrome.storage.local.get(notesKey).then((result) => {
         console.log("before Value is " + result[notesKey]);

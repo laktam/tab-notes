@@ -49,7 +49,7 @@ function displayNote(note) {
     contentDiv.innerText = note.content;
     contentDiv.className = "noteContent";
     noteDiv.append(titleDiv, contentDiv);
-
+    console.log("link : ", note.link)
     //style
 
 
