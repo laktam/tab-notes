@@ -27,9 +27,11 @@ function displayNotesList() {
         chrome.tabs.sendMessage(activeTab.id, { action: "get-note-key" }, function (response) {
             console.log(" response ", response);
             let { notesKey } = response;
-            chrome.storage.local.get(notesKey).then((result) => {
-                const notesList = result[notesKey] || []; // in case the notelist is undefined
-                for (let note of notesList) {
+            chrome.storage.local.get("notes").then((result) => {
+                // list for notes for all pages
+                const allNotesList = result["notes"] || []; // in case the notelist is undefined
+                const localNotesList = allNotesList[notesKey];
+                for (let note of localNotesList) {
                     displayNote(note);
                 }
             });

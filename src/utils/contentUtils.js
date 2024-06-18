@@ -158,16 +158,39 @@ function addNoteToList(note) {
     let notesKey = title + " " + "[" + site + "]";
     console.log("noteskey ", notesKey);
 
+
+    // chrome.storage.local.clear();
     // get notelist
-    chrome.storage.local.get(notesKey).then((result) => {
-        console.log("before Value is " + result[notesKey]);
-        const notesList = result[notesKey] || []; // in case the notelist is undefined
-        // add note to list
-        notesList.push(note);
-        chrome.storage.local.set({ [notesKey]: notesList }).then(() => {
-            console.log("Value is set ", notesList);
+    chrome.storage.local.get("notes").then((result) => {
+        console.log("before Value is ", result["notes"]);
+        // all notes
+        const notes = result["notes"] || {}; // in case the notelist is undefined
+        // get local page notes
+        if (notes[notesKey]) {
+            notes[notesKey].push(note);
+        } else {
+            notes[notesKey] = [note]
+        }
+        // let localNotes = notes[notesKey] || [];
+        // const localNotes = notes.find(localNotes => { localNotes }) || [];
+
+        // add note to notes list
+        // localNotes.push(note);
+
+        // notesList.push(note);
+        chrome.storage.local.set({ "notes": notes }).then(() => {
+            console.log("Value is set ", notes);
         });
     });
 
-
+    // // get notelist
+    // chrome.storage.local.get(notesKey).then((result) => {
+    //     console.log("before Value is " + result[notesKey]);
+    //     const notesList = result[notesKey] || []; // in case the notelist is undefined
+    //     // add note to list
+    //     notesList.push(note);
+    //     chrome.storage.local.set({ [notesKey]: notesList }).then(() => {
+    //         console.log("Value is set ", notesList);
+    //     });
+    // });
 }
