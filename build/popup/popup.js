@@ -2,9 +2,25 @@ main();
 
 
 function main() {
+    // href="../notesPage/notesPage.html/"
+    changeAllNotesLink();
     displayNotesList();
 }
 
+
+function changeAllNotesLink() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        let activeTab = tabs[0];
+        chrome.tabs.sendMessage(activeTab.id, { action: "get-note-key" }, function (response) {
+            console.log(" response ", response);
+            let { notesKey } = response;
+            const link = document.getElementById('allNotesLink');
+            var currentHref = link.getAttribute('href');
+            var newHref = currentHref + "?notesKey=" + notesKey;
+            link.setAttribute('href', newHref);
+        });
+    });
+}
 
 
 function displayNotesList() {
