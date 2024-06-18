@@ -1,3 +1,17 @@
 body {
-    width: 800px;
+    width: 350px;
+    max-height: 800px;
 }
+
+.note {
+    margin: 5px;
+    font-size: medium;
+    border: 1px solid gainsboro;
+    padding: 5px;
+}
+
+.noteTitle {
+    font-weight: bold;
+}
+
+.noteContent {}

@@ -40,11 +40,18 @@ function displayNotesList() {
 
 function displayNote(note) {
     const noteDiv = document.createElement('div');
+    noteDiv.className = "note";
     const titleDiv = document.createElement('div');
     titleDiv.innerText = note.title;
+    titleDiv.className = "noteTitle";
+
     const contentDiv = document.createElement('div');
     contentDiv.innerText = note.content;
+    contentDiv.className = "noteContent";
     noteDiv.append(titleDiv, contentDiv);
+
+    //style
+
 
     document.getElementById('notes').appendChild(noteDiv);
 }
