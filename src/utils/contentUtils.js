@@ -4,8 +4,8 @@ export function createNote() {
 
     Object.assign(noteContainer.style, {
         position: 'absolute',
-        top: '20px',
-        left: '20px',
+        top: '200px',
+        left: '200px',
         width: '300px',
         border: '2px solid #ccc',
         backgroundColor: '#f9f9f9',
@@ -26,7 +26,8 @@ export function createNote() {
         padding: '5px',
         cursor: 'move',
         backgroundColor: '#ddd',
-        borderBottom: '2px solid #ccc'
+        borderBottom: '2px solid #ccc',
+        boxSizing: 'border-box'
     });
 
     noteContainer.appendChild(noteHeader);
