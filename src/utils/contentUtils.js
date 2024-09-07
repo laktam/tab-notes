@@ -122,6 +122,11 @@ function makeDraggable(element, handle) {
     }
 }
 
+export function deleteNote(){
+    document.getElementsByClassName('note-container')[0].remove()
+    // document.getElementById('note-container').remove()
+}
+
 // function getNoteListByKey(callback) {
 //     //get current page info
 //     let site = location.hostname,
