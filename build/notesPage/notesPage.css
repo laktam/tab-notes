@@ -1,0 +1,17 @@
+body{
+    display: flex;
+}
+#sidebar{
+    width: 25%;
+    margin-right: 20px;
+}
+
+.pageKeyDiv{
+    margin: 4px;
+    border : 1px solid black;
+    padding: 5px;
+
+}
+.pageKeyDiv:hover{
+    background-color: gainsboro;
+}

@@ -32,7 +32,7 @@
                 "default": "Ctrl+Shift+Q",
                 "mac": "MacCtrl+Shift+Q"
             },
-            "description": "Description of your keyboard shortcut"
+            "description": "Description"
         }
     }
 }
