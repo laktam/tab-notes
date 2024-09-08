@@ -41,6 +41,7 @@ A browser extension that allows users to take notes on the current tab, save the
 <img src="screenshots/3.png" width="48%">
 <img src="screenshots/4.png" width="48%">
 </div>
+
 https://github.com/user-attachments/assets/ae458922-61f0-4683-8e52-a5cdefea0fbf
 
 
