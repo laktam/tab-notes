@@ -34,6 +34,15 @@ A browser extension that allows users to take notes on the current tab, save the
 - **View All Notes**:
   - Click the **View all notes** link on the popup to view and search all notes across different tabs.
 
+## Example
+<div>
+<img src="screenshots/1.png" width="48%">
+<img src="screenshots/2.png" width="48%">
+<img src="screenshots/3.png" width="48%">
+<img src="screenshots/4.png" width="48%">
+</div>
+https://github.com/user-attachments/assets/ae458922-61f0-4683-8e52-a5cdefea0fbf
+
 
 ## Keyboard Shortcut
 
